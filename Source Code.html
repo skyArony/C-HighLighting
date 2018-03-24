@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='ANSI'><meta name='author' content='2015551509'><title>Syntax highlighting </title><link rel='stylesheet' type='text/css' href='./style.css'></head><body><pre><h class='key'>Source Code</h><br><br><h class='cyc'>#include</h> <h class='str'>&ltstdio.h&gt</h>
+<h class='cyc'>#include</h> <h class='str'>&ltstdlib.h&gt</h>
+<h class='cyc'>#include</h> <h class='str'>&ltstring.h&gt</h>
+<h class='cyc'>#include</h> <h class='str'>"global var.h"</h>
+<h class='cyc'>#include</h> <h class='str'>"openfile.h"</h>
+
+<h class='key'>int</h> <h class='fun'>main</h><h class='kuo'>()</h>
+{
+    <h class='key'>printf</h><h class='kuo'>("请输入所需打开的cpp的文件路径及名字:")</h>;
+    <h class='key'>scanf</h><h class='kuo'>("%s",title)</h>;
+    fpw=openw<h class='kuo'>()</h>;
+    fpr=openr<h class='kuo'>(title)</h>;
+    <h class='key'>fputs</h><h class='kuo'>(htmlformat,fpw)</h>;
+    <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+    <h class='cyc'>while</h><h class='kuo'>(!feof(fpr))</h>
+    {
+    	<h class='key'>memset</h><h class='kuo'>(take,' ',sizeof(take))</h>;
+        <h class='key'>fgets</h><h class='kuo'>(take,501,fpr)</h>;
+        len=<h class='key'>strlen</h><h class='kuo'>(take)</h>;
+        <h class='cyc'>if</h><h class='kuo'>(len==1||len==0)</h>
+        {
+        	<h class='key'>fputs</h><h class='kuo'>(take,fpw)</h>;
+         	<h class='cyc'>continue</h>;
+        }
+        <h class='cyc'>if</h><h class='kuo'>(len>=502)</h>
+        {
+        	<h class='cyc'>continue</h>;
+        }
+        <h class='cyc'>for</h><h class='kuo'>(i=0;i<=len-1;i++)</h>
+        {
+            <h class='cyc'>if</h><h class='kuo'>(c==2)</h>
+            {
+                site=<h class='key'>strstr</h><h class='kuo'>(take,note)</h>;
+                <h class='cyc'>if</h><h class='kuo'>(site==NULL)</h>
+                {
+                	<h class='key'>fputs</h><h class='kuo'>(take,fpw)</h>;
+                    <h class='cyc'>break</h>;
+                }
+                <h class='cyc'>else</h>
+                {
+                    <h class='cyc'>while</h><h class='kuo'>(!(take[i]=='*'&&take[i+1]=='/'))</h>
+                	{
+                		<h class='cyc'>if</h><h class='kuo'>(take[i]=='\n')</h>
+                		{
+	                		<h class='key'>fputc</h><h class='kuo'>('\n',fpw)</h>;
+	                		<h class='cyc'>break</h>;
+	                	}
+                		<h class='key'>fputc</h><h class='kuo'>(take[i],fpw)</h>;
+                		i++;
+                	}
+                	<h class='key'>fputs</h><h class='kuo'>(note,fpw)</h>;
+                	<h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                	<h class='key'>fputc</h><h class='kuo'>('\n',fpw)</h>;
+                	c=<h class='form'>0</h>;
+                	<h class='cyc'>break</h>;
+                }
+            }
+            <h class='cyc'>if</h><h class='kuo'>(take[i]=='/'&&take[i+1]=='/'&&a&&c==0)</h>     <h class='not'>//单行注释</h>
+            {
+                c=<h class='form'>2</h>;
+                <h class='key'>fputs</h><h class='kuo'>(noti,fpw)</h>;
+                <h class='cyc'>while</h><h class='kuo'>(take[i]!='\n')</h>
+                {
+                	<h class='key'>fputc</h><h class='kuo'>(take[i],fpw)</h>;
+                	i++;
+                }
+                <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                <h class='key'>fputc</h><h class='kuo'>('\n',fpw)</h>;
+                i=<h class='form'>0</h>,c=<h class='form'>0</h>;
+                <h class='cyc'>break</h>;
+            }
+            <h class='cyc'>if</h><h class='kuo'>(take[i]=='/'&&take[i+1]=='*'&&a&&c==0)</h>     <h class='not'>//多行注释开始</h>
+            {
+                c=<h class='form'>2</h>;
+                <h class='key'>fputs</h><h class='kuo'>(noti,fpw)</h>;
+                <h class='cyc'>while</h><h class='kuo'>(!(take[i]=='*'&&take[i+1]=='/'))</h>
+                {
+                	<h class='cyc'>if</h><h class='kuo'>(take[i]=='\n')</h>
+                	{
+	                	<h class='key'>fputc</h><h class='kuo'>('\n',fpw)</h>;
+	                	<h class='cyc'>goto</h> ko;
+	                }
+                	<h class='key'>fputc</h><h class='kuo'>(take[i],fpw)</h>;
+                	i++;
+                }
+                <h class='key'>fputs</h><h class='kuo'>(note,fpw)</h>;
+                <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                <h class='key'>fputc</h><h class='kuo'>('\n',fpw)</h>;
+                c=<h class='form'>0</h>;
+                <h class='cyc'>break</h>;
+            }
+            <h class='cyc'>if</h><h class='kuo'>(c==0)</h>
+            {
+                <h class='cyc'>if</h><h class='kuo'>(take[i]==' '||take[i]==','||take[i]==';'||take[i]=='('||take[i]=='\n'||take[i]=='\''||take[i]=='\"'||(take[i]>=48&&take[i]<=57)||take[i]</h>==<h class='str'>'\t'</h>||take[i]==<h class='str'>'='</h>||take[i]==<h class='str'>'+'</h>||take[i]==<h class='str'>'-'</h>||take[i]==<h class='str'>'*'</h>||take[i]==<h class='str'>'/'</h>||take[i]==<h class='str'>'?'</h>||take[i]==<h class='str'>':'</h>||take[i]==<h class='str'>'!'</h>)
+                {
+                	<h class='cyc'>if</h><h class='kuo'>(ch==0&&take[i]=='\"')</h>
+                	{
+	                	prog[ch]=take[i];
+                 		ch++;
+                  		i++;
+                    	<h class='cyc'>while</h><h class='kuo'>(take[i]!='\"')</h>
+                    	{
+                    		prog[ch]=take[i];
+                 			ch++;
+                  			i++;
+                    	}
+                    	prog[ch]=take[i];
+               			ch++;
+               			i++;
+               			ch++;
+	                }
+	                <h class='cyc'>if</h><h class='kuo'>(ch==0&&take[i]=='\'')</h>
+                	{
+	                	prog[ch]=take[i];
+                 		ch++;
+                  		i++;
+                    	<h class='cyc'>while</h><h class='kuo'>(take[i]!='\'')</h>
+                    	{
+                    		prog[ch]=take[i];
+                 			ch++;
+                  			i++;
+                    	}
+                    	prog[ch]=take[i];
+               			ch++;
+               			i++;
+               			ch++;
+	                }
+	                <h class='cyc'>if</h><h class='kuo'>(ch==0&&(take[i]>=48&&take[i]<=57))</h>
+                	{
+	                	<h class='cyc'>while</h><h class='kuo'>(take[i]>=48&&take[i]<=57)</h>
+                    	{
+                    		prog[ch]=take[i];
+                 			ch++;
+                  			i++;
+                    	}
+	                }
+                    <h class='cyc'>else</h> <h class='cyc'>if</h><h class='kuo'>(ch==0)</h>
+                    {
+                        <h class='key'>fputc</h><h class='kuo'>(take[i],fpw)</h>;
+                        <h class='cyc'>continue</h>;
+                    }
+                    prog[ch]=<h class='str'>'\0'</h>;
+               abc: <h class='cyc'>if</h><h class='kuo'>(ch>0)</h>
+                    {
+                    	lenprog=<h class='key'>strlen</h><h class='kuo'>(prog)</h>;
+                    	<h class='cyc'>if</h><h class='kuo'>(prog[0]=='\"'&&prog[lenprog-1]=='\"')</h>
+                    	{
+	                    	<h class='key'>fputs</h><h class='kuo'>(str,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                            ch=<h class='form'>0</h>;
+                            <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+	                    }
+	                    <h class='cyc'>if</h><h class='kuo'>(prog[0]=='\''&&prog[lenprog-1]=='\'')</h>
+                    	{
+	                    	<h class='key'>fputs</h><h class='kuo'>(str,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                            ch=<h class='form'>0</h>;
+                            <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+	                    }
+	                    <h class='cyc'>if</h><h class='kuo'>(prog[0]>=48&&prog[0]<=57)</h>
+                    	{
+	                    	<h class='key'>fputs</h><h class='kuo'>(form,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                            ch=<h class='form'>0</h>;
+                            <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+	                    }
+                        <h class='cyc'>if</h><h class='kuo'>(prog[0]==40)</h>
+                        {
+                            <h class='key'>fputs</h><h class='kuo'>(kuohead,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                            ch=<h class='form'>0</h>;
+                            <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+                        }
+                        <h class='cyc'>if</h><h class='kuo'>(prog[0]==38&&e==1)</h>
+                        {
+                        	<h class='key'>fputs</h><h class='kuo'>(str,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                            <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                            ch=<h class='form'>0</h>,e=<h class='form'>0</h>;
+                            <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+                        }
+                        <h class='key'>int</h> cmp=<h class='form'>0</h>;
+                        <h class='cyc'>for</h><h class='kuo'>(cmp=0;cmp<numkey;cmp++)</h>
+                        {
+                            <h class='cyc'>if</h><h class='kuo'>(strcmp(prog,keyword[cmp])</h>==<h class='form'>0</h>)
+                            {
+                                <h class='key'>fputs</h><h class='kuo'>(key,fpw)</h>;
+                                <h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                                <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                                ch=<h class='form'>0</h>;
+                                <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+                                <h class='cyc'>break</h>;
+                            }
+
+                        }
+                        <h class='cyc'>for</h><h class='kuo'>(cmp=0;cmp<numcyc;cmp++)</h>
+                        {
+                            <h class='cyc'>if</h><h class='kuo'>(strcmp(prog,cycword[cmp])</h>==<h class='form'>0</h>)
+                            {
+                                <h class='key'>fputs</h><h class='kuo'>(cyc,fpw)</h>;
+                                <h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                                <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                                ch=<h class='form'>0</h>;
+                                <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+                                <h class='cyc'>break</h>;
+                            }
+
+                        }
+                        <h class='cyc'>for</h><h class='kuo'>(cmp=0;cmp<=0;cmp++)</h>
+                        {
+                            <h class='cyc'>if</h><h class='kuo'>(strcmp(prog,mai[cmp])</h>==<h class='form'>0</h>)
+                            {
+                                <h class='key'>fputs</h><h class='kuo'>(fun,fpw)</h>;
+                                <h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                                <h class='key'>fputs</h><h class='kuo'>(fin,fpw)</h>;
+                                ch=<h class='form'>0</h>;
+                                <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+                                <h class='cyc'>break</h>;
+                            }
+                        }
+						<h class='key'>fputs</h><h class='kuo'>(prog,fpw)</h>;
+                        ch=<h class='form'>0</h>;
+                        <h class='key'>memset</h><h class='kuo'>(prog,'\0',sizeof(prog))</h>;
+                        <h class='cyc'>if</h><h class='kuo'>(take[i]=='\"')</h>
+                        {
+                        	prog[ch]=take[i];
+                 			ch++;
+                  			i++;
+                    		<h class='cyc'>while</h><h class='kuo'>(take[i]!='\"')</h>
+                    		{
+                    			prog[ch]=take[i];
+                 				ch++;
+                  				i++;
+                    		}
+                   			prog[ch]=take[i];
+ 							ch++;
+               				i++;
+               				ch++;
+					        <h class='cyc'>goto</h> abc;
+                   		}
+                   		<h class='cyc'>if</h><h class='kuo'>(take[i]=='\'')</h>
+                        {
+                        	prog[ch]=take[i];
+                 			ch++;
+                  			i++;
+                    		<h class='cyc'>while</h><h class='kuo'>(take[i]!='\'')</h>
+                    		{
+                    			prog[ch]=take[i];
+                 				ch++;
+                  				i++;
+                    		}
+                   			prog[ch]=take[i];
+ 							ch++;
+               				i++;
+               				ch++;
+					        <h class='cyc'>goto</h> abc;
+                   		}
+                   		<h class='cyc'>if</h><h class='kuo'>(take[i]>=48&&take[i]<=57)</h>
+                        {
+                    		<h class='cyc'>while</h><h class='kuo'>(take[i]>=48&&take[i]<=57)</h>
+                    		{
+                    			prog[ch]=take[i];
+                 				ch++;
+                  				i++;
+                    		}
+					        <h class='cyc'>goto</h> abc;
+                   		}
+                    }
+                    <h class='cyc'>if</h><h class='kuo'>(take[i]!='('&&take[i]!='\''&&take[i]!='\"')</h>
+                    {
+                    	<h class='key'>fputc</h><h class='kuo'>(take[i],fpw)</h>;
+                    	<h class='cyc'>continue</h>;
+                    }
+
+                }
+                <h class='cyc'>if</h><h class='kuo'>(take[i]=='<'&&d==0)</h>
+                {
+                	d=<h class='form'>1</h>;
+               		prog[ch]=<h class='form'>38</h>,prog[++ch]=<h class='str'>'l'</h>,prog[++ch]=<h class='str'>'t'</h>;
+                	ch++;
+
+                }
+                <h class='cyc'>if</h><h class='kuo'>(take[i]=='>'&&d==1)</h>
+                {
+                	d=<h class='form'>0</h>;
+                	prog[ch]=<h class='str'>'&'</h>,prog[++ch]=<h class='str'>'g'</h>,prog[++ch]=<h class='str'>'t'</h>;
+                	ch++;
+                	e=<h class='form'>1</h>;
+                }
+                <h class='cyc'>if</h><h class='kuo'>(take[i]==40)</h>
+                {
+                    <h class='cyc'>do</h>
+                    {
+                        prog[ch]=take[i];
+                        ch++;
+                        i++;
+                    }
+                    <h class='cyc'>while</h><h class='kuo'>(take[i]!=41)</h>;
+                }
+                <h class='cyc'>if</h><h class='kuo'>(take[i]!=' '&&take[i]!=','&&take[i]!=';'&&take[i]!='<'&&take[i]!='>')</h>
+                {
+                    prog[ch]=take[i];
+                    ch++;
+                }
+            }
+            kk: ;
+        }
+        ko: ;
+    }
+    <h class='key'>fputs</h><h class='kuo'>(last,fpw)</h>;
+    <h class='key'>fclose</h><h class='kuo'>(fpw)</h>;
+    <h class='key'>fclose</h><h class='kuo'>(fpr)</h>;
+    <h class='cyc'>return</h> <h class='form'>0</h>;
+}
+</pre></body></html>

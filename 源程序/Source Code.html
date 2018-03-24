@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='ANSI'><meta name='author' content='2015551509'><title>Syntax highlighting </title><link rel='stylesheet' type='text/css' href='./style.css'></head><body><pre><h class='key'>Source Code</h><br><br><h class='cyc'>#include</h> <h class='str'>&ltstdio.h&gt</h>
+<h class='cyc'>#include</h> <h class='str'>&ltstring.h&gt</h>
+<h class='cyc'>#include</h> <h class='str'>&ltmath.h&gt</h>
+<h class='fun'>main</h><h class='kuo'>()</h>
+{
+    <h class='key'>int</h> n,k=<h class='form'>1</h>;
+    <h class='key'>scanf</h><h class='kuo'>("%d",&n)</h>;
+    <h class='cyc'>while</h><h class='kuo'>(k<=n)</h>
+    {
+        <h class='key'>char</h> x[<h class='form'>50</h>],y[<h class='form'>50</h>];
+        <h class='key'>int</h> a,b,i,j,xlen,ylen,f=<h class='form'>0</h>,h=<h class='form'>0</h>;
+        <h class='key'>double</h> m=<h class='form'>0</h>.<h class='form'>0</h>,n=<h class='form'>0</h>.<h class='form'>0</h>,z;
+        <h class='key'>scanf</h><h class='kuo'>("%s %d %s %d",&x,&a,&y,&b)</h>;
+        xlen=<h class='key'>strlen</h><h class='kuo'>(x)</h>;
+        ylen=<h class='key'>strlen</h><h class='kuo'>(y)</h>;
+        <h class='cyc'>if</h><h class='kuo'>(x[0]==45)</h>
+        {   f=<h class='form'>0</h>;
+        <h class='cyc'>for</h><h class='kuo'>(int t=0;t<xlen;t++)</h>
+           {x[t]=x[t+<h class='form'>1</h>];}
+            xlen--;
+            f++;
+        }
+        <h class='cyc'>if</h><h class='kuo'>(y[0]==45)</h>
+        {
+            h=<h class='form'>0</h>;
+            <h class='cyc'>for</h><h class='kuo'>(int t=0;t<ylen;t++)</h>
+           {y[t]=y[t+<h class='form'>1</h>];}
+            ylen--;
+            h++;
+        }
+        <h class='cyc'>for</h><h class='kuo'>(i=0;i<xlen;i++)</h>
+        {
+            <h class='cyc'>if</h><h class='kuo'>(x[i]>=48&&x[i]<=57)</h>
+            {
+                x[i]=x[i]-<h class='form'>48</h>;
+            }
+            <h class='cyc'>else</h> <h class='cyc'>if</h><h class='kuo'>(x[i]>=65&&x[i]<=90)</h>
+            {
+                x[i]=x[i]-<h class='form'>55</h>;
+            }
+            <h class='cyc'>else</h> <h class='cyc'>if</h><h class='kuo'>(x[i]>=97&&x[i]<=122)</h>
+            {
+                x[i]=x[i]-<h class='form'>61</h>;
+            }
+            m=m+x[i]*pow<h class='kuo'>(a,xlen-i-1)</h>;
+        }
+
+        <h class='cyc'>for</h><h class='kuo'>(i=0;i<ylen;i++)</h>
+        {
+            <h class='cyc'>if</h><h class='kuo'>(y[i]>=48&&y[i]<=57)</h>
+            {
+                y[i]=y[i]-<h class='form'>48</h>;
+            }
+            <h class='cyc'>else</h> <h class='cyc'>if</h><h class='kuo'>(y[i]>=65&&y[i]<=90)</h>
+            {
+                y[i]=y[i]-<h class='form'>55</h>;
+            }
+            <h class='cyc'>else</h> <h class='cyc'>if</h><h class='kuo'>(y[i]>=97&&y[i]<=122)</h>
+            {
+                y[i]=y[i]-<h class='form'>61</h>;
+            }
+            n=n+y[i]*pow<h class='kuo'>(b,ylen-i-1)</h>;
+        }
+        <h class='cyc'>if</h><h class='kuo'>(h==0&&f==0)</h>
+        {
+            z=m+n;
+        }
+        <h class='cyc'>else</h> <h class='cyc'>if</h><h class='kuo'>(h==0&&f!=0)</h>
+        {
+            z=-m+n;
+        }
+        <h class='cyc'>else</h> <h class='cyc'>if</h><h class='kuo'>(h!=0&&f==0)</h>
+        {
+            z=m-n;
+        }
+        <h class='cyc'>else</h> <h class='cyc'>if</h><h class='kuo'>(h!=0,f!=0)</h>
+        {
+            z=-m-n;
+        }
+        <h class='key'>printf</h><h class='kuo'>("%.0lf\n",z)</h>;
+        k++;
+    }
+}
+</pre></body></html>
